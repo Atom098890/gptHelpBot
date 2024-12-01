@@ -14,14 +14,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Debug SSH Secret
-      run: echo "USERS:${{ secrets.USERS }}" | wc -c
-
     # 2. Установка SSH-соединения
     - name: Set up SSH connection
       uses: webfactory/ssh-agent@v0.7.0
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        ssh-private-key: ${{ secrets.BOT_KEY }}
 
     # 3. Копирование кода на сервер
     - name: Upload code to VPS
