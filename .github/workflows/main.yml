@@ -38,8 +38,7 @@ jobs:
         ssh -o StrictHostKeyChecking=no atom@${{ secrets.SERVER_IP }} "
           cd /home/atom/gptHelpBot &&
           docker build -t bothelp . &&
-          docker stop bothelp || true &&
-          docker rm bothelp || true &&
+          docker ps -a -q -f name=bothelp | grep -q . && docker stop bothelp && docker rm bothelp || true &&
           docker run -d \
             --name bothelp \
             -e TOKEN_BOT=${{ secrets.TOKEN_BOT }} \
@@ -47,3 +46,4 @@ jobs:
             -e USERS=${{ secrets.USERS }} \
             -p 3000:3000 bothelp
         "
+
