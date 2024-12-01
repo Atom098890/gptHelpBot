@@ -30,7 +30,7 @@ jobs:
     # 3. Копирование кода на сервер
     - name: Upload code to VPS
       run: |
-        scp -o StrictHostKeyChecking=no -r ./ atom@${{ secrets.SERVER_IP }}:/home/atom/gptHelpBot
+        scp -o StrictHostKeyChecking=no -r * atom@${{ secrets.SERVER_IP }}:/home/atom/gptHelpBot
 
     # 4. Сборка Docker-образа на сервере
     - name: Build and run Docker container on VPS
