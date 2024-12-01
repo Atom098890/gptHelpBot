@@ -15,8 +15,6 @@ jobs:
       uses: actions/checkout@v3
 
     # 2. Установка SSH-соединения
-    - name: Debug SSH Secret
-      run: echo "${{ secrets.SSH_PRIVATE_KEY }}" | wc -c
     - name: Set up SSH connection
       uses: webfactory/ssh-agent@v0.7.0
       with:
@@ -25,12 +23,12 @@ jobs:
     # 3. Копирование кода на сервер
     - name: Upload code to VPS
       run: |
-        scp -o StrictHostKeyChecking=no -r . atom@89.116.34.119:/home/atom/gptHelpBot
+        scp -o StrictHostKeyChecking=no -r . atom@${{ secrets.SERVER_IP }}:/home/atom/gptHelpBot
 
     # 4. Сборка Docker-образа на сервере
     - name: Build and run Docker container on VPS
       run: |
-        ssh -o StrictHostKeyChecking=no atom@89.116.34.119 "
+        ssh -o StrictHostKeyChecking=no atom@${{ secrets.SERVER_IP }} "
           cd /home/atom/gptHelpBot &&
           docker build -t bothelp . &&
           docker stop bothelp || true &&
