@@ -23,7 +23,7 @@ jobs:
     - name: Set permissions for atom
       run: |
         ssh -o StrictHostKeyChecking=no atom@${{ secrets.SERVER_IP }} "
-          chown -R :developers /home/atom/gptHelpBot &&
+          chown -R atom:developers /home/atom/gptHelpBot &&
           chmod -R 775 /home/atom/gptHelpBot
         "
 
