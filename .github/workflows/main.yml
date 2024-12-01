@@ -3,7 +3,7 @@ name: Deploy Telegram Bot
 on:
   push:
     branches:
-      - main  # Запуск workflow при пуше в ветку master
+      - main
 
 jobs:
   deploy:
