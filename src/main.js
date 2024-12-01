@@ -35,7 +35,6 @@ bot.command('start', async (ctx)=> {
             });
         }
     });
-    
     // await ctx.reply(JSON.stringify(ctx.message, null, 2));
 });
 
