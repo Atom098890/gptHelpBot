@@ -45,5 +45,5 @@ jobs:
             -e TOKEN_BOT=${{ secrets.TOKEN_BOT }} \
             -e TOKEN_AI=${{ secrets.TOKEN_AI }} \
             -e USERS=${{ secrets.USERS }} \
-            -p 3000:3000 helpbot
+            -p 3000:3000 bothelp
         "
